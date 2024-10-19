@@ -7,6 +7,12 @@ public class CartaoDeCredito {
     private ArrayList<Compra> compras;
     private double porcentagemUso;
 
+    public CartaoDeCredito(String titular, double limite) {
+        this.titular = titular;
+        this.limite = limite;
+        this.saldo = this.limite;
+    }
+
     public String getTitular() {
         return titular;
     }
@@ -20,17 +26,22 @@ public class CartaoDeCredito {
     }
 
     public double getPorcentagemUso() {
-        return ((getSaldo() * 100) / getLimite()) - 100;
+        return 100 - ((getSaldo() * 100) / getLimite());
     }
 
-    public CartaoDeCredito(String titular, double limite){
-        this.limite = limite;
-        this.saldo = this.limite;
-        this.titular = titular;
+    public boolean aprovarCompra(Compra compra){
+        if (this.getSaldo() >= compra.getValor()){
+            this.saldo -= compra.getValor();
+            System.out.println("Compra realizada!");
+            return true;
+        } else {
+            System.out.println("Saldo insuficiente.");
+            return false;
+        }
     }
 
     @Override
     public String toString() {
-        return String.format("Titular: %S %nSaldo: R$ %.2f/%.2f (Usados: %s%%)", getTitular(), getSaldo(), getLimite(), getPorcentagemUso());
+        return String.format("Titular: %S %nSaldo: R$ %s/%s (Usados: %s%%)", getTitular(), getSaldo(), getLimite(), (int) getPorcentagemUso());
     }
 }

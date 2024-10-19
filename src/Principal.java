@@ -1,9 +1,10 @@
+import java.util.Scanner;
+
 public class Principal {
     public static void main(String[] args) {
-        CartaoDeCredito meuCartao = new CartaoDeCredito("Gustavo", 3200);
-        Compra compra = new Compra("Item 1", 320);
+        Scanner entrada = new Scanner(System.in);
+        CartaoDeCredito meuCartao = new CartaoDeCredito("John Doe", 100);
+        Compra compra = new Compra("Item 1", 50);
 
-        System.out.println(meuCartao);
-        System.out.println(compra);
     }
 }

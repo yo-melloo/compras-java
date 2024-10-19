@@ -1,7 +1,7 @@
 public class Compra {
-    String nome;
+    private String nome;
 //    String descricao;
-    double valor;
+    private double valor;
 
     public Compra(String nome, double valor){
         this.nome = nome;
@@ -9,11 +9,11 @@ public class Compra {
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public double getValor() {
-        return valor;
+        return this.valor;
     }
 
     @Override
